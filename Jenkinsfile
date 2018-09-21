@@ -5,13 +5,7 @@ pipeline {
   stages {
     stage('Init') {
       steps {
-        script{
-          env['GIT_BRANCH'] = sh(
-              script: "git branch | grep \\* | cut -d ' ' -f2",
-              returnStdout: true
-          ).trim()
-        }
-        echo 'scm : the commit branch  is ' + env.GIT_BRANCH
+        echo 'scm : the commit branch  is ${BUILD_BRANCH}'
       }
     }
     stage('Build') {
