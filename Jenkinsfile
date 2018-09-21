@@ -5,10 +5,14 @@ pipeline {
   stages {
     stage('Init') {
       steps {
-        echo 'scm : the commit branch  is ${BUILD_BRANCH}'
+        echo 'scm : the commit branch  is ' + env.BRANCH_NAME
       }
     }
     stage('Build') {
+      node {
+        echo 'Pulling...' + env.BRANCH_NAME
+        checkout scm
+      }
       steps {
         
         echo "Building..."
