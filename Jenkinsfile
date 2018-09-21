@@ -15,17 +15,27 @@ pipeline {
         echo "Building..."
       }
     }
-    stage('Test'){
+    stage('Mock'){
       steps {
-        echo "Testing..."
+        echo "Deploy to mocked environment..."
       }
     }
-    stage('Deploy Mock'){
-      steps {
-        echo "Deploy Mock..."
+    stage('Integration') {
+      when {
+          expression { env.BRANCH_NAME == 'master' }
       }
+      steps {
+          echo "Deploying to Integration"
+      }      
     }
-    
+    stage('Prod') {
+      when {
+          expression { env.BRANCH_NAME == 'master' }
+      }
+      steps {
+          echo "Deploying to Production"
+      }      
+    }    
   }
 }
     
