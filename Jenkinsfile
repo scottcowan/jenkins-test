@@ -6,7 +6,7 @@ pipeline {
     stage('Static Analysis') {
       script {
         env['GIT_BRANCH'] = sh(
-          script: "git branch | grep \* | cut -d ' ' -f2",
+          script: "git branch | grep \\* | cut -d ' ' -f2",
           returnStdout: true
         ).trim()
       }
