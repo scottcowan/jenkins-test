@@ -3,16 +3,9 @@
 pipeline {
   agent any
   stages {
-    stage('Init') {
+    stage('Get Artifacts') {
       steps {
         echo 'scm : the commit branch  is ' + env.BRANCH_NAME
-      }
-    }
-    stage('Build') {
-      steps {
-        echo 'Pulling...' + env.BRANCH_NAME
-        checkout scm       
-        echo "Building..."
       }
     }
     stage('Mock'){
