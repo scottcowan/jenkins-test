@@ -10,7 +10,9 @@ pipeline {
           returnStdout: true
         ).trim()
       }
-      echo "The branch is ${GIT_BRANCH}"
+      steps {
+        echo "The branch is ${GIT_BRANCH}"
+      }
     }
   }
 }
