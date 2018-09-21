@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent {
   node {
     def scmVars = checkout scm
     echo 'scm : the commit id is ' +scmVars.GIT_COMMIT
@@ -9,6 +9,7 @@ pipeline {
     echo " the commiter email is'${commitEmail}'"
     def commitName = sh(returnStdout: true, script: "git --no-pager show -s format=\'%an\'")
     echo " the commiter name is'${commitName}'"
+  }
   }
   stages {
     stage('Build') {
