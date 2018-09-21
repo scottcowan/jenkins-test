@@ -9,12 +9,9 @@ pipeline {
       }
     }
     stage('Build') {
-      node {
-        echo 'Pulling...' + env.BRANCH_NAME
-        checkout scm
-      }
       steps {
-        
+        echo 'Pulling...' + env.BRANCH_NAME
+        checkout scm       
         echo "Building..."
       }
     }
